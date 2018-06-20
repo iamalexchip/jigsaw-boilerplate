@@ -39,13 +39,25 @@ class Types
 	public function posts()
 	{
 		return Builder::parent('home')
-				->push('Posts');
+				->push('Posts', '/posts');
+	}
+
+	public function categories()
+	{
+		return Builder::parent('home')
+				->push('Categories', '/categories');
+	}
+
+	public function category($category)
+	{
+		return Builder::parent('categories')
+				->push($category->title, $category->getUrl());
 	}
 
 	public function tags()
 	{
 		return Builder::parent('home')
-				->push('Tags');
+				->push('Tags', '/tags');
 	}
 
 	public function tag($tag)
@@ -54,9 +66,9 @@ class Types
 				->push($tag->title, $tag->getUrl());
 	}
 
-	public function post($post)
+	public function post($post, $category)
 	{
-		return Builder::parent('posts')
+		return Builder::parent('category', $category)
 				->push($post->title, $post->getUrl());
 	}
 

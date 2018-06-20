@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                  <h1>Blog</h1>
-                  <span class="subheading">An archive of all the posts on this site</span>
+                  <h1>{{ $page->title }}</h1>
+                  <span class="subheading">{{ $page->description }}</span>
                 </div>
             </div>
         </div>
@@ -25,7 +25,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            @foreach($posts->sortByDesc('published') as $post)
+            {!! $page->breadcrumbs('category') !!}
+            <hr>
+            @foreach($page->getPosts($posts) as $post)
                 @include('_partial.post', ['post' => $post])
             @endforeach
             @include('_partial.pager')

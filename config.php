@@ -17,17 +17,14 @@ return [
         return $page->url('assets/'.$path);
     },
     'pageTitle' => function ($page) {
-        if ($page->getFilename() == 'index') {
-            return $page->siteName.' - '.$page->siteTagline;
-        }
         if ($page->title) {
             return $page->title.' | '.$page->siteName;
         } else {
-            return ucfirst($page->getFilename()).' | '.$page->siteName;
+            return $page->siteName.' - '.$page->siteTagline;
         }
     },
-    'breadcrumbs' => function ($page, $type, $params = null) {
-        return Jigsaw\Breadcrumbs\Render::for($type, $page, $params);
+    'breadcrumbs' => function ($page, $type, $param = null) {
+        return Jigsaw\Breadcrumbs\Render::for($page, $type, $param);
     },
     'collections' => [
     	'posts' => [
@@ -35,21 +32,33 @@ return [
             'publishDate' => function ($post) {
                 return date('j F, Y', $post->published);
             },
+            'getCategory' => function ($post, $categories) {
+                return $categories->where('slug', $post->category)->first();
+            },
     		'tagSlugs' => function ($post) {
     			return explode(', ', $post->tags);
     		},
-            'getTags' => function($post, $tags) {
+            'getTags' => function ($post, $tags) {
                 return $tags->whereIn('slug', $post->tagSlugs());
             }
     	],
+        'categories' => [
+            'path' => 'categories/{slug}',
+            'getPosts' => function ($category, $posts) {
+                return $posts->where('category', $category->slug);
+            },
+            'postCount' => function ($category, $posts) {
+                return $category->getPosts($posts)->count();
+            }
+        ],
     	'tags' => [
     		'path' => 'tags/{slug}',
-            'getPosts' => function($tag, $posts) {
-                return $posts->filter( function($post) use ($tag) {
+            'getPosts' => function ($tag, $posts) {
+                return $posts->filter(function ($post) use ($tag) {
                             return in_array($tag->slug, $post->tagSlugs());
                         });
             },
-            'postCount' => function($tag, $posts) {
+            'postCount' => function ($tag, $posts) {
                 return $tag->getPosts($posts)->count();
             }
     	]
