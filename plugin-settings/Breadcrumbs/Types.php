@@ -3,6 +3,7 @@
 namespace PluginSettings\Breadcrumbs;
 
 use Jigsaw\Breadcrumbs\Builder;
+use Jigsaw\Breadcrumbs\Breadcrumbs;
 
 class Types
 {
@@ -36,22 +37,16 @@ class Types
 		return Builder::make('Home', '/');
 	}
 
-	public function posts()
-	{
-		return Builder::parent('home')
-				->push('Posts', '/posts');
-	}
-
 	public function categories()
 	{
 		return Builder::parent('home')
 				->push('Categories', '/categories');
 	}
 
-	public function category($category)
+	public function category($page)
 	{
 		return Builder::parent('categories')
-				->push($category->title, $category->getUrl());
+				->push($page->title, $page->getPath());
 	}
 
 	public function tags()
@@ -60,16 +55,16 @@ class Types
 				->push('Tags', '/tags');
 	}
 
-	public function tag($tag)
+	public function tag($page)
 	{
 		return Builder::parent('tags')
-				->push($tag->title, $tag->getUrl());
+				->push($page->title, $page->getPath());
 	}
 
-	public function post($post, $category)
+	public function post($page, $category)
 	{
 		return Builder::parent('category', $category)
-				->push($post->title, $post->getUrl());
+				->push($page->title, $page->getPath());
 	}
 
 }

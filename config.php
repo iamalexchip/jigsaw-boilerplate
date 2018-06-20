@@ -7,14 +7,8 @@ return [
     'production' => false,
     'siteName' => 'Jigsaw boilerplate',
     'siteTagline' => 'A jigsaw boilerplate by Alex @zerochip',
-    'url' => function ($page, $path) {
-        if ($path[0] != '/') {
-            $path = '/'.$path;
-        }
-        return $page->baseUrl.$path;
-    },
     'asset' => function ($page, $path) {
-        return $page->url('assets/'.$path);
+        return $page->baseUrl.'/assets/'.$path;
     },
     'pageTitle' => function ($page) {
         if ($page->title) {
@@ -24,7 +18,7 @@ return [
         }
     },
     'breadcrumbs' => function ($page, $type, $param = null) {
-        return Jigsaw\Breadcrumbs\Render::for($page, $type, $param);
+        return Jigsaw\Breadcrumbs\Render::type($type, $page, $param);
     },
     'collections' => [
     	'posts' => [

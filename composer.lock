@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "025922fe5ab23e0e5f34bc312764d6d8",
+    "content-hash": "befbe0d04e6c193bd2bf2c4066e3dd7f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1292,37 +1292,13 @@
                 }
             ],
             "description": "Jigsaw plugin for generating breadcrumbs"
-        },
-        {
-            "name": "zerochip/jigsaw-relationships",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/var/www/packages/jigsaw-relationships",
-                "reference": "aa16f3067d6dc284b5f51842613638cba6a11df7",
-                "shasum": null
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jigsaw\\Relationships\\": "src"
-                }
-            },
-            "authors": [
-                {
-                    "name": "Alex @zerochip",
-                    "email": "semhiles@gmail.com"
-                }
-            ],
-            "description": "Jigsaw plugin for adding relation to collections"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zerochip/jigsaw-breadcrumbs": 20,
-        "zerochip/jigsaw-relationships": 20
+        "zerochip/jigsaw-breadcrumbs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

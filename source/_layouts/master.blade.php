@@ -37,10 +37,10 @@
                             <a class="nav-link" href="{{ $page->baseUrl }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ $page->url('categories') }}">Categories</a>
+                            <a class="nav-link" href="{{ $page->baseUrl }}/categories">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ $page->url('tags') }}">Tags</a>
+                            <a class="nav-link" href="{{ $page->baseUrl }}/tags">Tags</a>
                         </li>
                     </ul>
                 </div>

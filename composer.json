@@ -1,12 +1,11 @@
 {
     "require": {
         "tightenco/jigsaw": "^1.2",
-        "zerochip/jigsaw-breadcrumbs": "dev-master",
-        "zerochip/jigsaw-relationships": "dev-master"
+        "zerochip/jigsaw-breadcrumbs": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "PluginSettings\\": "plugin-settings/"
         }
-    }
+    } 
 }
