@@ -6,7 +6,7 @@ return [
     'baseUrl' => 'http://localhost:3000',
     'production' => false,
     'siteName' => 'Jigsaw boilerplate',
-    'siteTagline' => 'by Alex @zerochip',
+    'siteTagline' => 'A jigsaw boilerplate by Alex @zerochip',
     'url' => function ($page, $path) {
         if ($path[0] != '/') {
             $path = '/'.$path;
