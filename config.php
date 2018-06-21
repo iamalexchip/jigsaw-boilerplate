@@ -34,6 +34,13 @@ return [
     		},
             'getTags' => function ($post, $tags) {
                 return $tags->whereIn('slug', $post->tagSlugs());
+            },
+            'headerImage' => function ($page) {
+                if ($page->image[0] == '/') {
+                    return $page->asset('images'.$page->image);
+                } else {
+                    return $page->image;
+                }
             }
     	],
         'categories' => [
