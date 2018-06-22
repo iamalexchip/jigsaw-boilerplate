@@ -1,9 +1,8 @@
 <?php
 	
-namespace PluginSettings\Breadcrumbs;
+namespace Plugin\Breadcrumbs;
 
 use Jigsaw\Breadcrumbs\Builder;
-use Jigsaw\Breadcrumbs\Breadcrumbs;
 
 class Types
 {

@@ -4,7 +4,11 @@
 	  	<h3 class="post-subtitle">{{ $post->summary }}</h3>
 	</a>
 	<p class="post-meta">
-		Posted {{ $post->publishDate() }}
+		Posted in
+		<a href="{{ $post->getCategory($categories)->getUrl() }}">
+			{{ $post->getCategory($categories)->title }}
+		</a>
+		{{ $post->publishDate() }}
 		@foreach($post->getTags($tags) as $tag)
 		|
 		<a href="{{ $tag->getUrl() }}">

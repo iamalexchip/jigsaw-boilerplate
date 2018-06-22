@@ -44,7 +44,7 @@ return [
             }
     	],
         'categories' => [
-            'path' => 'categories/{slug}',
+            'path' => 'category/{slug}',
             'getPosts' => function ($category, $posts) {
                 return $posts->where('category', $category->slug);
             },
@@ -53,7 +53,7 @@ return [
             }
         ],
     	'tags' => [
-    		'path' => 'tags/{slug}',
+    		'path' => 'tag/{slug}',
             'getPosts' => function ($tag, $posts) {
                 return $posts->filter(function ($post) use ($tag) {
                             return in_array($tag->slug, $post->tagSlugs());

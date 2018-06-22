@@ -12,7 +12,11 @@
 					<h1>{{ $page->title }}</h1>
 					<h2 class="subheading">{{ $page->summary }}</h2>
 					<span class="meta">
-						Posted {{ $page->publishDate() }}
+						Posted in
+						<a href="{{ $page->getCategory($categories)->getUrl() }}">
+							{{ $page->getCategory($categories)->title }}
+						</a>
+						{{ $page->publishDate() }}
 						@foreach($page->getTags($tags) as $tag)
 						| <a href="{{ $tag->getUrl() }}">{{ $tag->title }}</a>
 						@endforeach
