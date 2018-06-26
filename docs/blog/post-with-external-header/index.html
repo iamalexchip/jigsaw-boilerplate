@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Automated feed fetching in laravel | Jigsaw boilerplate</title>
+        <title>Post with external header | Jigsaw boilerplate</title>
 
         <!-- CHANGE THIS TO USE CDN -->
 
@@ -61,8 +61,8 @@
 		<div class="row">
 			<div class="col-lg-8 col-md-10 mx-auto">
 				<div class="post-heading">
-					<h1>Automated feed fetching in laravel</h1>
-					<h2 class="subheading">Automatically fetch rss feed items and save them in your database</h2>
+					<h1>Post with external header</h1>
+					<h2 class="subheading">A post that uses an external image instead of the ones available in /assets/img</h2>
 					<span class="meta">
 						Posted in
 						<a href="https://zerochip.github.io/jigsaw-boilerplate/category/tutorial">
@@ -90,16 +90,22 @@
   	<li class="breadcrumb-item"><a href="https://zerochip.github.io/jigsaw-boilerplate/">Home</a></li>
 <li class="breadcrumb-item"><a href="https://zerochip.github.io/jigsaw-boilerplate/categories">Categories</a></li>
 <li class="breadcrumb-item"><a href="https://zerochip.github.io/jigsaw-boilerplate/category/tutorial">Tutorials</a></li>
-<li class="breadcrumb-item"><a href="https://zerochip.github.io/jigsaw-boilerplate/blog/automated-feed-fetching-in-laravel">Automated feed fetching in laravel</a></li>
+<li class="breadcrumb-item"><a href="https://zerochip.github.io/jigsaw-boilerplate/blog/post-with-external-header">Post with external header</a></li>
   </ol>
 </nav>
 				<hr>
-				<p>This blog post uses an external header</p>
-<p>Install feed io</p>
-<h3>Command</h3>
-<p>Now we create a command for the fetching</p>
-<pre><code>php artisan make:command FetchSource</code></pre>
-<p>the we write in the code</p>			</div>
+				<p>This blog post uses an external header image. Normall the frint matter has</p>
+<p><code>image: /computer_screen</code></p>
+<p>This one has</p>
+<p><code>image: https://source.unsplash.com/Skf7HxARcoc/800x450</code></p>
+<p>Hence the value is take as is. The <code>headerImage</code> healper is as follows</p>
+<pre><code>'headerImage' =&gt; function ($page) {
+    if ($page-&gt;image[0] == '/') {
+        return $page-&gt;asset('images'.$page-&gt;image);
+    } else {
+        return $page-&gt;image;
+    }
+}</code></pre>			</div>
 		</div>
 	</div>
 </article>
